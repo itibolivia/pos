@@ -1,6 +1,7 @@
 <template>
   <Head title="Welcome" />
 
+    
   <div>
     <div class="container fixed-top p-4">
       <div class="col-12">
@@ -33,22 +34,28 @@
       </div>
     </div>
 
-
-      <div class="container-fluid bg-1 text-center">
-        <h3>Sistema de Clientes</h3>
-        <breeze-application-logo width="82" />
-        <h3>Empezemos a manejar tus prospectos!</h3>
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
+        <div class="text-center">
+          <img
+            class="mb-4"
+            src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png"
+            style="width: 250px; height: 90px"
+          />
+          <h5 class="mb-3">Thank you for using our product. We're glad you're with us.</h5>
+          <p class="mb-3">MDB Team</p>
+          <a
+            class="btn btn-primary btn-lg"
+            data-mdb-ripple-init
+            href="https://mdbootstrap.com/docs/standard/getting-started/"
+            target="_blank"
+            role="button"
+            >Start MDB tutorial</a
+          >
+        </div>
       </div>
+    </div>
 
-      <div class="container-fluid bg-2 text-center">
-        <h3>¿Qué vamos a hacer?</h3>
-        <p>Vamos a manejar tus propspectos, definiendo un origen que denominamos fuente, creas las personas y cada persona puede ser un prospecto, a partir del prospecto realizar una gestión comercial para realizar la venta.</p>
-      </div>
-
-      <!--div class="container-fluid bg-3 text-center">
-        <h3>Where To Find Me?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div-->
     </div>
 
     <footer class="container-fluid bg-4 text-center">

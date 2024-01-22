@@ -25,7 +25,7 @@
     </div>
     </breeze-authenticated-layout>
 
-    <producto-modal v-if="showModal" :form="form" @updateProducto="updateProducto" @closeModal="closeModal" />
+    <producto-modal v-if="showModal" :form="form" :categorias="categorias" @updateProducto="updateProducto" @closeModal="closeModal" />
 </template>
 
 <script>
@@ -44,21 +44,22 @@ export default {
         ProductoModal,
         ProductoTable
     },
-    props: ['productos'],
+    props: ['productos', 'categorias'],
     data () {
         return {
             columns: [
                 {label: 'id', name: 'id', visible: false},
-                {label: 'Código', name: 'codigo', visible: true},
+                {label: 'Categoria', name: 'categoria', visible: true},
                 {label: 'Nombre', name: 'nombre', visible: true},
                 {label: 'Precio', name: 'precio', visible: true},
-                {label: 'Descripción', name: 'descripcion', visible: true}
+                {label: 'Descripción', name: 'descripcion', visible: true},
+                {label: 'Categoria ID', name: 'categoria_id', visible: true}
             ],
             showModal: false,
             producto: Object,
             DataTableKey: 0,
             form: this.$inertia.form({
-                codigo: '',
+                categoria_id: '',
                 nombre: '',
                 precio: '',
                 descripcion: ''
@@ -74,7 +75,7 @@ export default {
         },
         updated(producto){
             this.producto = producto;
-            this.form.codigo = producto.codigo;
+            this.form.categoria_id = producto.categoria_id;
             this.form.nombre = producto.nombre;
             this.form.precio = producto.precio;
             this.form.descripcion = producto.descripcion;

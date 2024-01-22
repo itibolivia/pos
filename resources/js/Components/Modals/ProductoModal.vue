@@ -31,26 +31,30 @@
                                 <div class="form-group">
                                 <label for="codigo">
                                     <span class="text-danger"> (*) </span>
-                                    Código
+                                    Categoria
                                 </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text" 
                                     id="inputGroupPrepend2">#</span>
                                     </div>
-                                    <input
-                                    v-model="form.codigo"
-                                    type="text"
-                                    class="form-control"
-                                    v-bind:class="{ 'is-invalid' : $page.props.errors.codigo}"
-                                    id="codigo"
-                                    aria-describedby="codigoHelp"
-                                />
+                                    <select
+                                        v-model="form.categoria_id"
+                                        class="form-select"
+                                        v-bind:class="{ 'is-invalid' : $page.props.errors.categoria_id}"
+                                        id="categoria_id"
+                                        aria-describedby="categoria_idHelp"
+                                    >
+                                        <option v-for="categoria in categorias" :value="categoria.id" :key="categoria.id"
+                                        :selected="form.categoria_id == categoria.id">
+                                            {{ categoria.nombre }}
+                                        </option>
+                                    </select>
                                 </div>
-                                <div v-if="$page.props.errors.codigo" class="text-danger">
-                                    {{ $page.props.errors.codigo }}
+                                <div v-if="$page.props.errors.categoria" class="text-danger">
+                                    {{ $page.props.errors.categoria }}
                                 </div>
-                                <small id="codigoHelp" class="form-text text-muted"
+                                <small id="categoriaHelp" class="form-text text-muted"
                                     >Coloque un código para el producto</small
                                 >
                                 </div>
@@ -151,6 +155,7 @@ export default {
             type: Object,
             default: () => {},
             },
+        categorias: Object,
     },
     methods: {
         closeModal() {

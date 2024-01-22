@@ -15,17 +15,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav me-auto">
-            <breeze-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+            <!--breeze-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
               Bienvenida
-            </breeze-nav-link>
+            </breeze-nav-link-->
             <breeze-nav-link :href="route('admins.index')" :active="route().current('admins.index')"
-            v-if="$page.props.auth.user.roles[0].name === 'superadmin'">
-              Admin
-            </breeze-nav-link>
-            <breeze-nav-link :href="route('usuarios.index')" :active="route().current('usuarios.index')"
+                v-if="$page.props.auth.user.roles[0].name === 'superadmin'">
+                  Admin
+                </breeze-nav-link>
+                <breeze-nav-link :href="route('usuarios.index')" :active="route().current('usuarios.index')"
+                v-if="$page.props.auth.user.roles[0].name === 'superadmin' ||
+                $page.props.auth.user.roles[0].name === 'admin'">
+                  Usuario
+                </breeze-nav-link>
+            <breeze-nav-link :href="route('categorias.index')" :active="route().current('categorias.index')"
             v-if="$page.props.auth.user.roles[0].name === 'superadmin' ||
             $page.props.auth.user.roles[0].name === 'admin'">
-              Usuario
+              Categorias
+            </breeze-nav-link>
+            <breeze-nav-link :href="route('productos.index')" :active="route().current('productos.index')"
+            v-if="$page.props.auth.user.roles[0].name === 'superadmin' ||
+            $page.props.auth.user.roles[0].name === 'admin'">
+              Productos
+            </breeze-nav-link>
+            <breeze-nav-link :href="route('compras.index')" :active="route().current('compras.index')"
+            v-if="$page.props.auth.user.roles[0].name === 'superadmin' ||
+            $page.props.auth.user.roles[0].name === 'admin'">
+              Compras
+            </breeze-nav-link>
+            <breeze-nav-link :href="route('notas.index')" :active="route().current('notas.index')">
+              POS
             </breeze-nav-link>
           </ul>
 
@@ -92,7 +110,7 @@ export default {
 
   data() {
     return {
-      showingNavigationDropdown: false,
+      showingNavigationDropdown: false
     }
   },
 

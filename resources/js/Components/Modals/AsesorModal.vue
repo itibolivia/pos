@@ -131,7 +131,6 @@ export default {
       default: () => {},
     },
   },
-  components: {},
   methods: {
     closeModal() {
       this.$page.props.errors = [];

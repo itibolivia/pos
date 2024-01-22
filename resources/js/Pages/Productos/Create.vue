@@ -15,21 +15,24 @@
                                 <div class="form-group">
                                 <label for="codigo">
                                     <span class="text-danger"> (*) </span>
-                                    Código
+                                    Categoria
                                 </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text" 
                                     id="inputGroupPrepend2">#</span>
                                     </div>
-                                    <input
-                                    v-model="form.codigo"
-                                    type="text"
-                                    class="form-control"
-                                    v-bind:class="{ 'is-invalid' : $page.props.errors.codigo}"
-                                    id="codigo"
-                                    aria-describedby="codigoHelp"
-                                />
+                                    <select
+                                        v-model="form.categoria_id"
+                                        class="form-select"
+                                        v-bind:class="{ 'is-invalid' : $page.props.errors.categoria_id}"
+                                        id="categoria_id"
+                                        aria-describedby="categoria_idHelp"
+                                    >
+                                        <option v-for="categoria in categorias" :value="categoria.id" :key="categoria.id">
+                                            {{ categoria.nombre }}
+                                        </option>
+                                    </select>
                                 </div>
                                 <div v-if="$page.props.errors.codigo" class="text-danger">
                                     {{ $page.props.errors.codigo }}
@@ -39,7 +42,7 @@
                                 >
                                 </div>
                             </div>
-                            <div class="col-md-8 mb-3">
+                            <div class="col-md-5 mb-3">
                                 <div class="form-group">
                                 <label for="nombre">
                                     <span class="text-danger"> (*) </span>
@@ -61,11 +64,12 @@
                                 >
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+
                             <div class="col-md-3 mb-3">
                                 <div class="form-group">
-                                <label for="precio">Precio</label>
+                                <label for="precio">
+                                    <span class="text-danger"> (*) </span>
+                                    Precio</label>
                                 <input
                                     v-model="form.precio"
                                     type="number"
@@ -83,7 +87,32 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-9 mb-3">
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="form-group">
+                                <label for="nombre">
+                                    Imagen
+                                </label>
+                                <input
+                                    type="file"
+                                    class="form-control"
+                                    @input="form.imagen = $event.target.files[0]"
+                                    v-bind:class="{ 'is-invalid' : $page.props.errors.nombre}"
+                                    id="nombre"
+                                    aria-describedby="nombreHelp"
+                                />
+                                <div v-if="$page.props.errors.nombre" class="text-danger">
+                                    {{ $page.props.errors.nombre }}
+                                </div>
+                                <small id="nombreHelp" class="form-text text-muted"
+                                    >Nombre completo de la persona para prospecto</small
+                                >
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 mb-3">
                                 <div class="form-group">
                                 <label for="descripcion">Descripción</label>
                                 <input
@@ -138,12 +167,14 @@ export default {
         BreezeAuthenticatedLayout,
         BreezeButton,
     },
+    props : ['categorias'],
     data () {
         return {
             form: this.$inertia.form({
-                codigo: '',
+                categoria_id: '',
                 nombre: '',
                 precio: '',
+                imagen: '',
                 descripcion: ''
             })
         }

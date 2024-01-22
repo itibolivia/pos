@@ -72,7 +72,8 @@
             },
           },
           columnDefs: [
-            { "visible": false, "targets": 0 }
+            { "visible": false, "targets": 0 },
+            { "visible": false, "targets": 5 }
           ],
           buttons: [
             {
